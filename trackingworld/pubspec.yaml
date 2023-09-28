@@ -1,0 +1,53 @@
+name: trackingworld
+description: A new Flutter project.
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/logo.png
+    - assets/profile.png
+    - assets/mont1.jpg
+    - assets/mont2.jpg
+    - assets/mont3.jpg
+
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: fonts/Roboto/Roboto-Regular.ttf
+          weight: 400
+        - asset: fonts/Roboto/Roboto-Bold.ttf
+          weight: 700
+
+    - family: OpenSans
+      fonts:
+        - asset: fonts/OpenSans/OpenSans_Condensed-Regular.ttf
+          weight: 400
+        - asset: fonts/OpenSans/OpenSans_Condensed-Bold.ttf
+          weight: 700
+        - asset: fonts/OpenSans/OpenSans_SemiCondensed-Regular.ttf
+          weight: 400
+        - asset: fonts/OpenSans/OpenSans_SemiCondensed-Bold.ttf
+          weight: 700
+        - asset: fonts/OpenSans/OpenSans-Regular.ttf
+          weight: 400
+        - asset: fonts/OpenSans/OpenSans-Bold.ttf
+          weight: 700
