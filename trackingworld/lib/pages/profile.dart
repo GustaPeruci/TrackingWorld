@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../colors.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -37,11 +38,57 @@ class ProfilePage extends StatelessWidget {
                   Icons.favorite,
                   color: Colors.grey,
                 ),
-                Text(
-                  "Curtidas",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey,
+                TextButton(
+                  style:
+                      TextButton.styleFrom(textStyle: TextStyle(fontSize: 16)),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/favorites');
+                  },
+                  child: const Text(
+                    'Curtidas',
+                    style: TextStyle(color: kTwGray900),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.settings,
+                  color: Colors.grey,
+                ),
+                TextButton(
+                  style:
+                      TextButton.styleFrom(textStyle: TextStyle(fontSize: 16)),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/settings');
+                  },
+                  child: const Text(
+                    'Configurações',
+                    style: TextStyle(color: kTwGray900),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.map,
+                  color: Colors.grey,
+                ),
+                TextButton(
+                  style:
+                      TextButton.styleFrom(textStyle: TextStyle(fontSize: 16)),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/travelPost');
+                  },
+                  child: const Text(
+                    'Posts',
+                    style: TextStyle(color: kTwGray900),
                   ),
                 ),
               ],
