@@ -1,4 +1,4 @@
-name: trackingworld
+name: com.example.trackingworld
 description: A new Flutter project.
 
 publish_to: 'none' 
@@ -13,6 +13,10 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+  firebase_core: ^2.20.0
+  favorite_button: ^0.0.4
+  cloud_firestore: ^4.11.0
+  ffi: ^2.1.0
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,6 @@
+import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
+import 'package:com.example.trackingworld/colors.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -7,7 +9,15 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
+const List<String> options = <String>[
+  'Filtro 1',
+  'Filtro 2',
+  'Filtro 3',
+];
+
 class _HomePageState extends State<HomePage> {
+  String dropdownValue = options.first;
+
   @override
   Widget build(BuildContext context) {
     final List<TravelItem> TravelItems = [
@@ -37,7 +47,13 @@ class _HomePageState extends State<HomePage> {
                 margin: EdgeInsets.symmetric(horizontal: 16),
                 child: Row(
                   children: [
-                    Icon(Icons.search),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.search,
+                      ),
+                      splashRadius: 20,
+                    ),
                     SizedBox(width: 8),
                     Expanded(
                       child: TextField(),
@@ -58,15 +74,44 @@ class _HomePageState extends State<HomePage> {
                 child: Row(
                   children: [
                     SizedBox(width: 50),
-                    Icon(Icons.apps),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.apps),
+                      splashRadius: 20,
+                    ),
                     SizedBox(width: 16),
-                    Icon(Icons.view_list),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.view_list),
+                      splashRadius: 20,
+                    ),
                     SizedBox(width: 16),
-                    Icon(Icons.format_align_justify),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.format_align_justify),
+                      splashRadius: 20,
+                    ),
                     SizedBox(width: 16),
-                    Icon(Icons.fmd_good_outlined),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.fmd_good_outlined),
+                      splashRadius: 20,
+                    ),
                     SizedBox(width: 80),
                     DropdownButton<String>(
+                      value: dropdownValue,
+                      icon: const Icon(Icons.arrow_downward),
+                      elevation: 16,
+                      style: const TextStyle(color: kTwGray900),
+                      underline: Container(
+                        height: 2,
+                        color: kTwGray900,
+                      ),
+                      onChanged: (String? value) {
+                        setState(() {
+                          dropdownValue = value!;
+                        });
+                      },
                       items: ['Filtro 1', 'Filtro 2', 'Filtro 3'].map(
                         (String value) {
                           return DropdownMenuItem<String>(
@@ -75,8 +120,6 @@ class _HomePageState extends State<HomePage> {
                           );
                         },
                       ).toList(),
-                      onChanged: (String? value) {},
-                      hint: Text('Filtros'),
                     ),
                   ],
                 ),
@@ -96,28 +139,28 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Stack(
                   children: [
-                    Image.asset(
-                      item.image,
-                      width: double.infinity,
-                      height: 200.0,
-                      fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/travel');
+                      },
+                      child: Image.asset(
+                        item.image,
+                        width: double.infinity,
+                        height: 200.0,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     Positioned(
                       bottom: 8,
                       right: 8,
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            item.isFavorite = !item.isFavorite;
-                          });
-                        },
-                        child: Icon(
-                          item.isFavorite
-                              ? Icons.favorite
-                              : Icons.favorite_border,
-                          color: item.isFavorite ? Colors.red : Colors.white,
-                        ),
-                      ),
+                      child: FavoriteButton(
+                          iconSize: 50,
+                          iconDisabledColor: Colors.white,
+                          valueChanged: (_isFavorite) {
+                            setState(() {
+                              item.isFavorite = _isFavorite;
+                            });
+                          }),
                     ),
                     Positioned(
                       bottom: 8,
